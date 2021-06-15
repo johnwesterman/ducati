@@ -25,8 +25,14 @@ function rundocker ()
 }
 
 if [[ $1 == "SE" || $1 == "se" ]]; then
-  ENC_KEY=TESTKEY
-  PCE_PASSWORD=Illumio123
+  if ! [[ -e software/se.txt ]]; then
+    echo "You are asking for SE setup with no SE setup."
+    echo "This script is looking for two variables, each on a separate line: ENC_KEY= and PCE_PASSWORD="
+    echo "Set these in software/se.txt and rerun this script."
+    exit 1
+  fi
+  ENC_KEY=`grep -E "ENC_KEY" software/se.txt | sed 's/^.*=//'`
+  PCE_PASSWORD=`grep -E "PCE_PASSWORD" software/se.txt | sed 's/^.*=//'`
   RUNSEMODE=YES
 elif [[ -z "${1}" ]] || [[ -z "${2}" ]]; then
   usage
