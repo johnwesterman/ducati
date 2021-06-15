@@ -1,0 +1,9 @@
+illumio-*
+.DS_Store
+.dockerignore
+*.rpm
+*.gpg
+software/*.xz
+software/*.bz2
+software/*.tgz
+software/*.rpm

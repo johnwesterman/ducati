@@ -1,0 +1,22 @@
+# Configuration generated 01/26/2018 15:32:58-0500
+install_root: "/opt/illumio-pce"
+runtime_data_root: "/var/lib/illumio-pce/runtime"
+persistent_data_root: "/var/lib/illumio-pce/data"
+ephemeral_data_root: "/var/lib/illumio-pce/tmp"
+log_dir: "/var/log/illumio-pce"
+private_key_cache_dir: "/var/lib/illumio-pce/keys"
+pce_fqdn: HOSTNAME
+service_discovery_fqdn: HOSTNAME
+front_end_management_https_port: PCE_FRONTEND_HTTPS_PORT
+front_end_https_port: PCE_FRONTEND_MANAGEMENT_HTTPS_PORT
+front_end_event_service_port: PCE_FRONTEND_EVENT_SERVICE_PORT
+node_type: snc0
+web_service_private_key: "/var/lib/illumio-pce/cert/server.key"
+web_service_certificate: "/var/lib/illumio-pce/cert/server.crt"
+email_address: PCE_EMAIL_ADDRESS
+service_discovery_encryption_key: cZSoCJ40OLBXTnDV8K5K+w==
+expose_user_invitation_link: true
+login_banner: LOGIN_BANNER
+cluster_public_ips:
+  cluster_fqdn:
+    - DISCOVERED_IP

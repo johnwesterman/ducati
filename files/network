@@ -1,0 +1,2 @@
+NETWORKING=yes
+HOSTNAME=pce.test.local

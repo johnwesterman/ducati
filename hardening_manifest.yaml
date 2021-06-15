@@ -1,0 +1,65 @@
+---
+apiVersion: v1
+
+# The repository name in registry1, excluding /ironbank/
+name: "illumio/pce"
+
+# List of tags to push for the repository in registry1
+# The most specific version should be the first tag and will be shown
+# on ironbank.dsop.io
+tags:
+- "c8_v1"
+- "latest"
+
+# Build args passed to Dockerfile ARGs
+args:
+  BASE_IMAGE: "redhat/ubi/ubi8"
+  BASE_TAG: "8.4"
+
+# Docker image labels
+labels:
+  org.opencontainers.image.title: "PCE"
+  ## Human-readable description of the software packaged in the image
+  org.opencontainers.image.description: "Illumio Core Policy Compute Engine"
+  ## License(s) under which contained software is distributed
+  org.opencontainers.image.licenses: "proprietary"
+  ## URL to find more information on the image
+  # org.opencontainers.image.url: "NONE"
+  ## Name of the distributing entity, organization or individual
+  org.opencontainers.image.vendor: "Illumio, Inc."
+  org.opencontainers.image.version: "c8_v1"
+  ## Keywords to help with search (ex. "cicd,gitops,golang")
+  mil.dso.ironbank.image.keywords: "segmentation,microsegmentation,zt,zero,trust"
+  ## This value can be "opensource" or "commercial"
+  mil.dso.ironbank.image.type: "commercial"
+  ## Product the image belongs to for grouping multiple images
+  mil.dso.ironbank.product.name: "Illumio Core Policy Compute Engine"
+
+# List of resources to make available to the offline build context
+resources:
+- auth:
+    id: AKIA6PDRLKPIWUZP3HW4
+    region: us-west-2
+  filename: illumio-pce.gpg
+  url: s3://illumio-dev-for-ironbank/illumio-pce.gpg
+  validation:
+    type: sha256
+    value: 5c38c4a201532c19d0cb67909d8400b84421784d77a542d6408be929b9cdfc22
+- auth:
+    id: AKIA6PDRLKPIWUZP3HW4
+    region: us-west-2
+  filename: illumio-ven.gpg
+  url: s3://illumio-dev-for-ironbank/illumio-ven.gpg
+  validation:
+    type: sha256
+    value: 14eaa0d719f45541bc0044d2e40f4ed1120e78903cd33e302f189f9e002eade0
+
+# List of project maintainers
+maintainers:
+- email: "john.westerman@illumio.com"
+  name: "John Westerman"
+  username: "jwesterman"
+- name: "Delali Kwami"
+  username: "kwami.delali"
+  email: "kwami.delali@solute.us"
+  cht_member: true
