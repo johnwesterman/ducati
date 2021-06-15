@@ -27,7 +27,9 @@ function rundocker ()
 if [[ $1 == "SE" || $1 == "se" ]]; then
   if ! [[ -e software/se.txt ]]; then
     echo "You are asking for SE setup with no SE setup."
-    echo "This script is looking for two variables, each on a separate line: ENC_KEY= and PCE_PASSWORD="
+    echo "software/se.txt file is missing."
+    echo "This script is looking for two variables in this file, each on a separate line:"
+    echo "ENC_KEY=[any encryption key] and PCE_PASSWORD=[demo user password]"
     echo "Set these in software/se.txt and rerun this script."
     exit 1
   fi
@@ -40,6 +42,9 @@ else
   ENC_KEY=$1
   PCE_PASSWORD=$2
 fi
+
+echo "$ENC_KEY is the encryption key used in the build process."
+echo "$PCE_PASSWORD will be the password used in the build process."
 
 killdocker
 builddocker
