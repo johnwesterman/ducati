@@ -1,7 +1,7 @@
 
 # Illumio Adaptive Security Platform Policy Compute Engine (PCE) in a docker container
 
-   version c8 v1 Saturday June 12, 2021 13:16
+   version c8 v1 Thursday June 17, 2021 12:42
 
 ## About this container
 
@@ -15,7 +15,7 @@ Below in the "starting the container" section you can find a full list fo variab
 * An encrypted PCE software bundle deployed to the ./ directory (project root directory).
 * An encrypted VEN bundle (optional) deployed to the ./ directory.
 * Full documentation for the Illumio ASP platform can be publically obtained at here: <https://docs.illumio.com/>.
-* For shortened notes on what it take to install a PCE you can reference <https://github.com/johnwesterman/illumio_core>
+* For shortened notes on what it take to install a PCE in any environment you can reference <https://github.com/johnwesterman/illumio_core>
 * Encryption keys to unencrypt the PCE and VEN files provided. If you need encryption keys please contact Illumio.
 
 ## Background before the build process is started
