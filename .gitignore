@@ -9,3 +9,5 @@ software/*.tgz
 software/*.rpm
 software/hold*
 se.txt
+build.sh
+killdocker.sh
