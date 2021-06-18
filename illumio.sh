@@ -179,12 +179,12 @@ function environment_setup ()
         -config /tmp/cert.conf \
         -sha256
 
-    # set file permissions
-    # echo "Setting file permissions..."
-    # chmod -R 700 /var/lib/illumio-pce
-    # chmod -R 700 /var/log/illumio-pce
-    # chmod 400 /var/lib/illumio-pce/cert/server.key
-    # chmod 440 /var/lib/illumio-pce/cert/server.crt
+    set file permissions
+    echo "Setting file permissions..."
+    chmod -R 700 /var/lib/illumio-pce
+    chmod -R 700 /var/log/illumio-pce
+    chmod 400 /var/lib/illumio-pce/cert/server.key
+    chmod 440 /var/lib/illumio-pce/cert/server.crt
 
     if [[ -n $DEBUG ]]; then
         # Check the cert if in debug mode.
