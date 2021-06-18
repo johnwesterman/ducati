@@ -1,6 +1,7 @@
 illumio-*
 .DS_Store
 .dockerignore
+.gitignore
 *.rpm
 *.gpg
 software/*.xz
