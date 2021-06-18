@@ -47,14 +47,12 @@ function run_pce()
     echo "Start the PCE in Runleve 5."
     $PCE_CTL set-runlevel 5 &&\
     $PCE_CTL status -sv -w 300
-
 }
 
 # Called only when PCE fully configured and PCE has been stopped
 function build_runtime()
 {
     echo "Build runtime_env.yml file"
-
 }
 
 # Called only when PCE fully configured and PCE has been stopped
@@ -113,7 +111,6 @@ function environment_setup ()
 
     if [ `ls -1 /home/ilo-pce/illumio-pce-sw-*.tgz  2>/dev/null | wc -l` -gt 0 ]; then
         if [ `ls -1 /home/ilo-pce/illumio-pce-sw-*.tgz  2>/dev/null | wc -l` -gt 1 ]; then
-            echo "Slow down cowboy, I can only install one set of commercial software."
             echo "Only the first software in the list will be installed."
         fi
         # if GA tar.gz file is provided use this over all others.
@@ -183,11 +180,11 @@ function environment_setup ()
         -sha256
 
     # set file permissions
-    echo "Setting file permissions..."
-    chmod -R 700 /var/lib/illumio-pce
-    chmod -R 700 /var/log/illumio-pce
-    chmod 400 /var/lib/illumio-pce/cert/server.key
-    chmod 440 /var/lib/illumio-pce/cert/server.crt
+    # echo "Setting file permissions..."
+    # chmod -R 700 /var/lib/illumio-pce
+    # chmod -R 700 /var/log/illumio-pce
+    # chmod 400 /var/lib/illumio-pce/cert/server.key
+    # chmod 440 /var/lib/illumio-pce/cert/server.crt
 
     if [[ -n $DEBUG ]]; then
         # Check the cert if in debug mode.
@@ -210,7 +207,8 @@ function environment_setup ()
     $PCE_CTL status -sv -w 300
 
     echo "Setting up the initial org and user in the database."
-    ILO_PASSWORD=$PCE_PASSWORD $PCE_DB create-domain --full-name "${PCE_FULLNAME:=Demo Account} " --user-name "${PCE_ADMIN_ACCOUNT:=demo@illumio.com}" --org-name "${PCE_ORG_NAME:=Demo}"
+    ILO_PASSWORD=$PCE_PASSWORD $PCE_DB create-domain --full-name "${PCE_FULLNAME:=Demo Account} " \
+        --user-name "${PCE_ADMIN_ACCOUNT:=demo@illumio.com}" --org-name "${PCE_ORG_NAME:=Demo}"
 
     echo "All PCE setup is completed."
 
