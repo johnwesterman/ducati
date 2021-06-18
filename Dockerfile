@@ -15,9 +15,9 @@ COPY illumio.sh /usr/bin/
 COPY files/limits.conf files/sysctl.conf /etc/
 COPY LICENSE files/runtime_env.yml.template /tmp/
 # copy Commercial GA software to container image
-COPY --chown=ilo-pce:ilo-pce foo ./*.gpg /home/ilo-pce/ 
+# COPY --chown=ilo-pce:ilo-pce foo ./*.gpg /home/ilo-pce/ 
 # SE software will copied if it exists to container image
-COPY --chown=ilo-pce:ilo-pce foo software/*.xz software/*.tgz software/*.bz2 /home/ilo-pce/
+COPY --chown=ilo-pce:ilo-pce foo illumio-software.gpg software/*.xz software/*.tgz software/*.bz2 /home/ilo-pce/
 
 # set up environment for the PCE
 RUN install -d -o ilo-pce -g ilo-pce /opt/illumio-pce && \

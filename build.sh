@@ -1,6 +1,6 @@
 function usage()
 {
-    echo "Usage: build.sh [SE] PCE_USER_PASSWORD KEY"
+    echo "Usage: build.sh [SE] SOFTWARE_ENCRYPTION_KEY PCE_USER_PASSWORD"
     exit 1
 }
 
@@ -21,7 +21,11 @@ function builddocker ()
 function rundocker ()
 {
   echo "Running the container."
-  docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY -e SE=$1 --hostname pce.test.local --name pce illumio-docker-pce
+  if [[ -n $RUNSEMODE ]]; then
+    docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY -e SE=$1 --hostname pce.test.local --name pce illumio-docker-pce
+  else
+    docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY --hostname pce.test.local --name pce illumio-docker-pce
+  fi
 }
 
 if [[ $1 == "SE" || $1 == "se" ]]; then

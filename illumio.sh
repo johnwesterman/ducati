@@ -63,10 +63,10 @@ function decrypt_software()
     RPM_DIR=/home/ilo-pce
 
     echo "Unencrypting Illumio software:"
-    if [[ -f $RPM_DIR/illumio-pce.gpg && -f $RPM_DIR/illumio-ven.gpg ]]; then
-        echo "Illuimo PCE/VEN RPM binaries exists ... continuing ..."
+    if [[ -f $RPM_DIR/illumio-software.gpg ]]; then
+        echo "Illuimo software found ... continuing ..."
     else
-        echo "Illumio PCE/VEN RPM binaries do not exist. Please fix this."
+        echo "Illumio software was not found. Please fix this."
         sleep 5
         exit 1
     fi
@@ -81,10 +81,8 @@ function decrypt_software()
     else
         # Using the key provide decrypt the software provided
         # This decryption method is for openssl 1.1.1+ on RHEL8+
-        echo "Unencrypting PCE software..."
-        openssl enc -d -aes256 -pbkdf2 -iter 1000 -in illumio-pce.gpg -out illumio-pce-sw-current.tgz -k ${KEY}
-        echo "Unencrypting VEN software..."
-        openssl enc -d -aes256 -pbkdf2 -iter 1000 -in illumio-ven.gpg -out illumio-ven-bundle-current.tar.bz2 -k ${KEY}
+        echo "Unencrypting Illumio software bundle ..."
+        openssl enc -d -aes256 -pbkdf2 -iter 1000 -salt -in illumio-software.gpg -k ${KEY} | tar xz
     fi
     echo "Decrypting software complete ..."
 

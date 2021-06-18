@@ -41,18 +41,10 @@ resources:
     id: AKIA6PDRLKPIWUZP3HW4
     region: us-west-2
   filename: illumio-pce.gpg
-  url: s3://illumio-dev-for-ironbank/illumio-pce.gpg
+  url: s3://illumio-dev-for-ironbank/illumio-software.gpg
   validation:
     type: sha256
-    value: 5c38c4a201532c19d0cb67909d8400b84421784d77a542d6408be929b9cdfc22
-- auth:
-    id: AKIA6PDRLKPIWUZP3HW4
-    region: us-west-2
-  filename: illumio-ven.gpg
-  url: s3://illumio-dev-for-ironbank/illumio-ven.gpg
-  validation:
-    type: sha256
-    value: 14eaa0d719f45541bc0044d2e40f4ed1120e78903cd33e302f189f9e002eade0
+    value: 1c0dfb17395e0f9cb66999fe51e8e235bb7c8b91a61c08e2151a59a419c7d0e8
 
 # List of project maintainers
 maintainers:
