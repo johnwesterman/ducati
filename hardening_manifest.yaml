@@ -40,7 +40,7 @@ resources:
 - auth:
     id: AKIA6PDRLKPIWUZP3HW4
     region: us-west-2
-  filename: illumio-pce.gpg
+  filename: illumio-software.gpg
   url: s3://illumio-dev-for-ironbank/illumio-software.gpg
   validation:
     type: sha256
