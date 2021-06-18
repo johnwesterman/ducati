@@ -1,4 +1,4 @@
-# Configuration generated 01/26/2018 15:32:58-0500
+# Configuration for Illumio Core
 install_root: "/opt/illumio-pce"
 runtime_data_root: "/var/lib/illumio-pce/runtime"
 persistent_data_root: "/var/lib/illumio-pce/data"
@@ -14,7 +14,7 @@ node_type: snc0
 web_service_private_key: "/var/lib/illumio-pce/cert/server.key"
 web_service_certificate: "/var/lib/illumio-pce/cert/server.crt"
 email_address: PCE_EMAIL_ADDRESS
-service_discovery_encryption_key: cZSoCJ40OLBXTnDV8K5K+w==
+service_discovery_encryption_key: 
 expose_user_invitation_link: true
 login_banner: LOGIN_BANNER
 cluster_public_ips:
