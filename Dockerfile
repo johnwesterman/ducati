@@ -14,9 +14,6 @@ RUN yum install -y procps openssl hostname bzip2 langpacks-en glibc-langpack-en;
 COPY illumio.sh /usr/bin/ 
 COPY files/limits.conf files/sysctl.conf /etc/
 COPY LICENSE files/runtime_env.yml.template /tmp/
-# copy Commercial GA software to container image
-# COPY --chown=ilo-pce:ilo-pce foo ./*.gpg /home/ilo-pce/ 
-# SE software will copied if it exists to container image
 COPY --chown=ilo-pce:ilo-pce foo illumio-software.gpg software/*.xz software/*.tgz software/*.bz2 /home/ilo-pce/
 
 # set up environment for the PCE
@@ -40,11 +37,11 @@ USER ilo-pce
 
 ENTRYPOINT /usr/bin/illumio.sh
 
-# add the persistent volumes after Illumio is installed
+# Persistent volumes for Illumio
 VOLUME /var/lib/illumio-pce
 VOLUME /var/log/illumio-pce
 
-# expose our standard ports, maybe configurable in the future
+# Expose our standard ports
 EXPOSE 8443
 EXPOSE 8444
 
