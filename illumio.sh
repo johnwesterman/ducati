@@ -207,8 +207,8 @@ function environment_setup ()
     $PCE_CTL status -sv -w 300
 
     echo "Setting up the initial org and user in the database."
-    ILO_PASSWORD=$PCE_PASSWORD $PCE_DB create-domain --full-name "${PCE_FULLNAME:=Demo Account} " \
-        --user-name "${PCE_ADMIN_ACCOUNT:=demo@illumio.com}" --org-name "${PCE_ORG_NAME:=Demo}"
+    ILO_PASSWORD=$PCE_PASSWORD $PCE_DB create-domain --full-name "${PCE_FULLNAME} " \
+        --user-name "${PCE_ADMIN_ACCOUNT}" --org-name "${PCE_ORG_NAME}"
 
     echo "All PCE setup is completed."
 
@@ -276,10 +276,9 @@ if [ ! -e $PCE_ENVIRONMENT ]; then
     echo "Initiate PCE environment for the first time."
     environment_setup
     #Print out access to the UI with admin account
-    # THE HOSTNAME ASSIGNMENT LOOKS WRONG JWW June 10 2021
     echo -e "\nTo access the PCE you must be able to resolve the following FQDN - \
-        \n      https://${HOSTNAME:=pce.test.local}:${PCE_FRONTEND_MANAGEMENT_HTTPS_PORT:=8443} \
-        \n      user=${PCE_ADMIN_ACCOUNT:=demo@illumio.com} \
+        \n      https://${HOSTNAME}:${PCE_FRONTEND_MANAGEMENT_HTTPS_PORT} \
+        \n      user=${PCE_ADMIN_ACCOUNT} \
         \n      The password was provided as input at the start of this process. \
         \n"
 else
