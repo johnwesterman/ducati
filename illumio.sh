@@ -85,7 +85,6 @@ function decrypt_software()
     echo "Decrypting software complete ..."
 
     # Remove the decryption key that was passed into this program.
-    KEY=""
 }
 
 # Bring up the PCE for the first time
@@ -286,6 +285,10 @@ else
     run_pce
     echo "PCE is starting ..."
 fi
+
+export KEY=""
+export ILO_PASSWORD=""
+export PCE_PASSWORD=""
 
 wait_indefinitely
 

@@ -14,6 +14,7 @@ RUN yum install -y procps openssl hostname bzip2 langpacks-en glibc-langpack-en;
 COPY illumio.sh /usr/bin/ 
 COPY files/limits.conf files/sysctl.conf /etc/
 COPY LICENSE files/runtime_env.yml.template /tmp/
+COPY files/pcealiases /home/ilo-pce
 COPY --chown=ilo-pce:ilo-pce foo illumio-software.gpg software/*.xz software/*.tgz software/*.bz2 /home/ilo-pce/
 
 # set up environment for the PCE

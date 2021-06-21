@@ -1,0 +1,4 @@
+alias ctl='/opt/illumio-pce/illumio-pce-ctl'
+alias ctldb='/opt/illumio-pce/illumio-pce-db-management'
+alias ctlenv='/opt/illumio-pce/illumio-pce-env'
+alias ll='ls -la'
