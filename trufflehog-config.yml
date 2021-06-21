@@ -1,0 +1,9 @@
+skip_strings:
+  # These are the false positives we want to ignore
+  # will only be skipped in corresponding files
+  hardening_manifest.yaml:
+    - "AKIA6PDRLKPIWUZP3HW4"
+  hardening_manifest.yml:
+    - "AKIA6PDRLKPIWUZP3HW4"
+  download.yaml:
+    - "AKIA6PDRLKPIWUZP3HW4"
