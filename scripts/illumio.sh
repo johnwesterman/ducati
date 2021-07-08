@@ -77,14 +77,13 @@ function decrypt_software()
         echo "Debug mode is on. Skipping decryption process."
         continue
     else
-        # Using the key provide decrypt the software provided
-        # This decryption method is for openssl 1.1.1+ on RHEL8+
+        # Using the key provided to decrypt the Illumio software bundle
         echo "Unencrypting Illumio software bundle ..."
-        openssl enc -d -aes256 -pbkdf2 -iter 1000 -salt -in illumio-software.gpg -k ${KEY} | tar xz
+        gpg --pinentry-mode loopback --passphrase ${KEY} -d illumio-software.gpg > out.blob
+        tar -xof out.blob
+        rm out.blob
     fi
     echo "Decrypting software complete ..."
-
-    # Remove the decryption key that was passed into this program.
 }
 
 # Bring up the PCE for the first time
@@ -178,7 +177,6 @@ function environment_setup ()
         -config /tmp/cert.conf \
         -sha256
 
-    set file permissions
     echo "Setting file permissions..."
     chmod -R 700 /var/lib/illumio-pce
     chmod -R 700 /var/log/illumio-pce
@@ -192,6 +190,7 @@ function environment_setup ()
         echo "Checking certificate ..."
         /opt/illumio-pce/illumio-pce-env setup --test 5 --list
         echo "End of checks."
+        sleep 30
     fi
 
     echo -e "\nStarting run level 1."
