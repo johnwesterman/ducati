@@ -15,7 +15,7 @@ COPY scripts/illumio.sh /usr/bin/
 COPY config/limits.conf config/sysctl.conf /etc/
 COPY LICENSE config/runtime_env.yml.template /tmp/
 COPY config/pcealiases /home/ilo-pce
-COPY --chown=ilo-pce:ilo-pce illumio-software.gpg software/*.xz software/*.tgz software/*.bz2 software/foo /home/ilo-pce/
+COPY --chown=ilo-pce:ilo-pce software/foo *.gpg software/*.xz software/*.tgz software/*.bz2 /home/ilo-pce/
 
 # set up environment for the PCE
 RUN install -d -o ilo-pce -g ilo-pce /opt/illumio-pce && \

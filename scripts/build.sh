@@ -22,7 +22,7 @@ function rundocker ()
 {
   echo "Running the container."
   if [[ -n $RUNSEMODE ]]; then
-    docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true --env-file env.list -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY -e SE=$1 --hostname pce.test.local --name pce illumio-docker-pce
+    docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true -e PCE_FULLNAME=$PCE_FULLNAME -e PCE_ADMIN_ACCOUNT=$PCE_ADMIN_ACCOUNT -e PCE_ORG_NAME=$PCE_ORG_NAME -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY -e SE=$1 --hostname pce.test.local --name pce illumio-docker-pce
   else
     docker run -it -p 8443:8443 -p 8444:8444 -e ILLUMIO_ACCEPT_EULA=true --env-file env.list -e PCE_PASSWORD=$PCE_PASSWORD -e KEY=$ENC_KEY --hostname pce.test.local --name pce illumio-docker-pce
   fi
@@ -39,6 +39,9 @@ if [[ $1 == "SE" || $1 == "se" ]]; then
   fi
   ENC_KEY=`grep -E "ENC_KEY" software/se.txt | sed 's/^.*=//'`
   PCE_PASSWORD=`grep -E "PCE_PASSWORD" software/se.txt | sed 's/^.*=//'`
+  PCE_FULLNAME=`grep -E "PCE_FULLNAME" software/se.txt | sed 's/^.*=//'`
+  PCE_ADMIN_ACCOUNT=`grep -E "PCE_ADMIN_ACCOUNT" software/se.txt | sed 's/^.*=//'`
+  PCE_ORG_NAME=`grep -E "PCE_ORG_NAME" software/se.txt | sed 's/^.*=//'`
   RUNSEMODE=YES
 elif [[ -z "${1}" ]] || [[ -z "${2}" ]]; then
   usage

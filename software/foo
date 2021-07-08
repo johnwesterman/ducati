@@ -1,0 +1,13 @@
+This is an empty file.
+I use this file so that Docker build will copy
+files to this directory whether they exist or
+not using wildcards. Otherwise Docker build
+will fail during copy with specific files. It
+needs at least one good file or the entire string
+will fail.
+You can safely ignore this file. It's just apart
+of the automation.
+
+The reason:
+You have to specify any optional files for the COPY command with * along with one real file, the COPY command needs to copy at least one file over, even if there is more than one optional file to copy with the * option. So foo is created and the rest are going to be optional but copied if they
+exist. This just makes it easy to test multiple types of software in a development environment depending on the type of work being done.

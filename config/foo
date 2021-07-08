@@ -1,9 +1,0 @@
-This is an empty file.
-I use this file so that Docker build will copy
-files to this directory whether they exist or
-not using wildcards. Otherwise Docker build
-will fail during copy with specific files. It
-needs at least one good file or the entire string
-will fail.
-You can safely ignore this file. It's just apart
-of the automation.
