@@ -1,0 +1,5 @@
+PCE_FULLNAME=Demo_User
+PCE_ADMIN_ACCOUNT=demo@illumio.com
+PCE_ORG_NAME=DEMO
+ENC_KEY=SuperCaliFragilisticExpiAlliDoshious
+PCE_PASSWORD=Illumio123
