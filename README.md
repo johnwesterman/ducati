@@ -1,5 +1,5 @@
 
-# Illumio Adaptive Security Platform Policy Compute Engine (PCE) in a docker container
+# Illumio CORE Policy Compute Engine (PCE) Docker container
 
    version c8 v1 Thursday June 17, 2021 12:42
 
